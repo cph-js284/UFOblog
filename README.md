@@ -66,7 +66,7 @@ left join BookParts       on BookParts.id = BookLocations.bookparts_id
 order by km_away
 ```
   
-*MongoDB*  
+**MongoDB**  
 ```
 Locations.aggregate
 [ { "$geoNear": {
