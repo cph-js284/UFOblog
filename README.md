@@ -1,10 +1,10 @@
 # UFO Blog Assigment
 
-By:
-Benjamin Schultz Larsen     cph-bl135@cphbusiness.dk 
-Jacob Sørensen              cph-js284@cphbusiness.dk
+By:  
+Benjamin Schultz Larsen     cph-bl135@cphbusiness.dk  
+Jacob Sørensen              cph-js284@cphbusiness.dk  
 Yosuke Ueda                 cph-yu173@cphbusiness.dk  
-
+  
 # The usage of geospatial data in databases
 <p>
 Geospatial coordinates is something that has seen a dramatic increase in use since the introduction of mobile devices.
