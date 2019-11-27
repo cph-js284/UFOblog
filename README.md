@@ -101,7 +101,7 @@ Conducting performance measurement for the above query, and displaying the resul
 
 It is important to note here; that this diagram depicts averages of 5 measurements&ast;, see “Notes”-section below for link to relevant data. We see here that MongoDB has an advantage over MySql in performance, when it comes to data containing geospatial information.
 
-&ast*These measurements are in fact so close to each other, that the standard deviation is below 0.2% for the MySQL measurement and approx. 0.5% for the MongoDB measurement.*
+&ast;*These measurements are in fact so close to each other, that the standard deviation is below 0.2% for the MySQL measurement and approx. 0.5% for the MongoDB measurement.*
 
 ### Findings  
 The experiment conducted, shows that with the correct setup, it is possible to achieve a performance increase on data containing geospatial by a factor 2, using MongoDB compared to MySql. 
