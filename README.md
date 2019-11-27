@@ -30,7 +30,7 @@ We will use a list of city names where the population of the city is 15.000 or m
   
 Specifically, we will measure the response time for each database executing the following query:
   
-“Given a geolocation, your application lists all books mentioning a city in the vicinity of the given geolocation.”
+“Given a geolocation, your application lists all books mentioning a city in the vicinity of the given geolocation.”  
 *- this query is part of the assignment from which this experiment is based on*  
   
 The above mentioned data will be placed in the MySql database using the following schema (3rd normal form)
@@ -101,7 +101,7 @@ Conducting performance measurement for the above query, and displaying the resul
 
 It is important to note here; that this diagram depicts averages of 5 measurements&ast;, see “Notes”-section below for link to relevant data. We see here that MongoDB has an advantage over MySql in performance, when it comes to data containing geospatial information.
 
-* *these measurements are in fact so close to each other, that the standard deviation is below 0.2% for the MySQL measurement and approx. 0.5% for the MongoDB measurement.*
+&ast*These measurements are in fact so close to each other, that the standard deviation is below 0.2% for the MySQL measurement and approx. 0.5% for the MongoDB measurement.*
 
 ### Findings  
 The experiment conducted, shows that with the correct setup, it is possible to achieve a performance increase on data containing geospatial by a factor 2, using MongoDB compared to MySql. 
