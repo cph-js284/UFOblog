@@ -65,7 +65,7 @@ order by km_away
   
 **MongoDB**  
 ```
-Locations.aggreagate
+Locations.aggregate
 [ { "$geoNear": {
       "near": {
         "type": "Point",
