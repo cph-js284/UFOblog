@@ -10,7 +10,9 @@ Yosuke Ueda                 cph-yu173@cphbusiness.dk
 Geospatial coordinates is something that has seen a dramatic increase in use since the introduction of mobile devices.  
 There is a noticeable difference in how well different types of databases process this type of data.  
 In fact, choosing the correct type of database will lead to a factor 2 increase in database performance.  
-Consequently leading to your database being able to handle twice the amount of request in the same timeframe  
+Consequently leading to your database being able to handle twice the amount of request in the same timeframe.
+  
+Do note; that this blog will not be focused specifically on mobile device but rather geodata which is prominently used by such devices.  
 </p>
 <p>
 In the following blog we will investigate which type of database is best suited for handling geospatial data. There are many different types of databases to choose from; graph-databases like NEO4J, key/value stores like Redis, document databases like MongoDB and relational databases like MySql and Mssql.  
