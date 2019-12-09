@@ -95,7 +95,7 @@ Locations.aggregate
 ```
   
 Conducting performance measurement for the above query, and displaying the results in diagrams gives us the results shown below.  
-*For a complete table with query measurements please see [artifact link](https://github.com/benjaco-edu/db-guttenburg/blob/master/Artefakt%20Applikationstiming.pdf)*  
+*For a complete table with query measurements please see query 4 in [artifact link](https://github.com/benjaco-edu/db-guttenburg/blob/master/Artefakt%20Applikationstiming.pdf)*  
   
 ![diagram3a](https://github.com/cph-js284/UFOblog/blob/master/diagrams/diagram3a.png)  
 
