@@ -29,6 +29,7 @@ Which database can in the most performant way get a list of geolocation, closest
   
 ### Regarding data
 We will use a list of city names where the population of the city is 15.000 or more. This is roughly about 23.000 cities worldwide. The data can be found [here](https://raw.githubusercontent.com/benjaco-edu/db-guttenburg/master/cities15000.txt). We will couple this data with every city mentioned in every single book written in English that is no longer under  copyright protection; this amounts to roughly 37.000 books - available at the Project Gutenberg site [gutenberg.org](http://www.gutenberg.org/)  
+[Experiment based on data from this repport](https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf).  
   
 Specifically, we will measure the response time for each database executing the following query:
   
@@ -47,12 +48,12 @@ If one decides to split the data into 2 collections, it needs to update both col
     
 Obviously both of the databases will be using indexing, this not only makes them faster(performance), but is also a requirement for MongoDB to work with geofunctions. We mention indexing because we feel it is important information, when doing performance testing on databases.  
   
-(MySql refenrece)[https://dev.mysql.com/doc/refman/5.5/en/optimization-indexes.html]
+[MySql refenrece](https://dev.mysql.com/doc/refman/5.5/en/optimization-indexes.html)
 
 Following MySql columns has been indexed: Locations.name, Locations.Coordinate, BookParts.title, BookParts.author, and all ids.  
 The same goes for MongoDB with the following properties: Locations.name, Books.id, Books.title, Location.id, Books.author and Locations.coordinate.  
   
-for further comparison between index and no index; please see page 13, query 4 (Q4) where UI is without index and MI is with an index (Link to report)[https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf ]  
+for further comparison between index and no index; please see page 13, query 4 (Q4) where UI is without index and MI is with an index [Link to report](https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf)  
   
 ### Query performance
 Below we have included, the query used in our experiment to answer the question in Mysql and MongoDB.  
@@ -74,7 +75,7 @@ order by km_away
 st_distance return a distance between two points in meters  
 st_contains returns a boolean indicating whether or not a point is inside or not inside a defined area  
 st_buffer creates and area around a givin coordinate or area around a defined(geo-object) area. Works only in SRID 0  
-st_GeomFromText,st_AsText convert back and forth between “normal” text and the internal representation of a mysql coordinate   
+st_GeomFromText, st_AsText convert back and forth between “normal” text and the internal representation of a mysql coordinate   
   
 The only reason we convert back and forth is to get a buffer around the specific point, due to the fact the st_buffer can not work with SRID 4326 (the globe), however we only we only used the buffer as a rough filtering tool to distinguish between inside and outside of the selected area.
 Mysql can use its own index when using st_contains to see if a point is inside the buffer, when measuring the distance to each point, then the profile tells us that it has been going through all the rows - with the buffer, it does not.
@@ -129,7 +130,7 @@ The experiment conducted, shows that with the correct setup, it is possible to a
 ### Perspective
 On a grand scale this means that, if you build an application, be it mobile or other, with a heavy reliance on geospatial data stored in a database; you can achieve a performance increase and thereby an overall better application experience by choosing MongoDB over MySql.  
 Reason for mongodb handling geodata with better performance compared to mysql might be because; mongoDB is finding the relevant geopoint directly using its index, and from here, expands the search area until the max distance is found, this makes mongodb able to stream the data back as well, and return the first result very fast.
-For more in depth please read the following (link)[https://www.mongodb.com/blog/post/geospatial-performance-improvements-in-mongodb-3-2]
+For more in depth please read the following [link](https://www.mongodb.com/blog/post/geospatial-performance-improvements-in-mongodb-3-2)
 
 
 ### Notes
