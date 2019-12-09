@@ -45,9 +45,13 @@ Data in the MongoDB is placed in collections following the structure below
   
 Obviously both of the databases will be using indexing, this not only makes them faster(performance), but is also a requirement for MongoDB to work with geofunctions. We mention indexing because we feel it is important information, when doing performance testing on databases.  
   
+(MySql refenrece)[https://dev.mysql.com/doc/refman/5.5/en/optimization-indexes.html]
+
 Following MySql columns has been indexed: Locations.name, Locations.Coordinate, BookParts.title, BookParts.author, and all ids.  
 The same goes for MongoDB with the following properties: Locations.name, Books.id, Books.title, Location.id, Books.author and Locations.coordinate.  
-
+  
+for further comparison between index and no index; please see page 13, query 4 (Q4) where UI is without index and MI is with an index (Link to report)[https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf ]  
+  
 ### Query performance
 Below we have included, the query used in our experiment to answer the question in Mysql and MongoDB.  
 
