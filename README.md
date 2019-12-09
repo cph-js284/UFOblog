@@ -42,7 +42,9 @@ The above mentioned data will be placed in the MySql database using the followin
 Data in the MongoDB is placed in collections following the structure below  
 
 ![diagram2](https://github.com/cph-js284/UFOblog/blob/master/diagrams/diagram2.png)  
-  
+MongoDb is document based and do not impose any schema. If one decides to store all the data in one single collection, it performs the reading and updating operations fast as the data is embedded in one document. This embedded data model will however contain various redundant data as the citynames will be stored every time it is mentioned in the books. This will not necessary become a scalability issue for MongoDb, but we might expect an increase in citynames mentioned in future books or in extensive tour guides.  
+If one decides to split the data into 2 collections, it needs to update both collections for books and city every time a book is added. Moving to this form will replace the embedded structure with additional field which serves as the reference between the 2 collection. By creating this relation, we avoid the data redundancy and can access the lists by reference
+    
 Obviously both of the databases will be using indexing, this not only makes them faster(performance), but is also a requirement for MongoDB to work with geofunctions. We mention indexing because we feel it is important information, when doing performance testing on databases.  
   
 (MySql refenrece)[https://dev.mysql.com/doc/refman/5.5/en/optimization-indexes.html]
