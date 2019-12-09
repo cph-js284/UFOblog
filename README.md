@@ -69,6 +69,16 @@ left join BookParts       on BookParts.id = BookLocations.bookparts_id
 order by km_away
 ```
   
+st_distance return a distance between two points in meters  
+st_contains returns a boolean indicating whether or not a point is inside or not inside a defined area  
+st_buffer creates and area around a givin coordinate or area around a defined(geo-object) area. Works only in SRID 0  
+st_GeomFromText,st_AsText convert back and forth between “normal” text and the internal representation of a mysql coordinate   
+  
+The only reason we convert back and forth is to get a buffer around the specific point, due to the fact the st_buffer can not work with SRID 4326 (the globe), however we only we only used the buffer as a rough filtering tool to distinguish between inside and outside of the selected area.
+Mysql can use its own index when using st_contains to see if a point is inside the buffer, when measuring the distance to each point, then the profile tells us that it has been going through all the rows - with the buffer, it does not.
+
+As an aside we will note that we actually ran the code both with and without the buffering and the result was almost identical (within a 2% margin).
+
 **MongoDB**  
 ```
 Locations.aggregate
@@ -100,6 +110,8 @@ Locations.aggregate
   } } ]
 ```
   
+$geoNear filters away objects there isn’t near a given point, and attaches the distance the the returned object in the same operation.
+  
 Conducting performance measurement for the above query, and displaying the results in diagrams gives us the results shown below.  
 *For a complete table with query measurements please see query 4 in [artifact link](https://github.com/benjaco-edu/db-guttenburg/blob/master/Artefakt%20Applikationstiming.pdf)*  
   
@@ -113,7 +125,10 @@ It is important to note here; that this diagram depicts averages of 5 measuremen
 The experiment conducted, shows that with the correct setup, it is possible to achieve a performance increase on data containing geospatial by a factor 2, using MongoDB compared to MySql. 
   
 ### Perspective
-On a grand scale this means that, if you build an application, be it mobile or other, with a heavy reliance on geospatial data stored in a database; you can achieve a performance increase and thereby an overall better application experience by choosing MongoDB over MySql.
+On a grand scale this means that, if you build an application, be it mobile or other, with a heavy reliance on geospatial data stored in a database; you can achieve a performance increase and thereby an overall better application experience by choosing MongoDB over MySql.  
+Reason for mongodb handling geodata with better performance compared to mysql might be because; mongoDB is finding the relevant geopoint directly using its index, and from here, expands the search area until the max distance is found, this makes mongodb able to stream the data back as well, and return the first result very fast.
+For more in depth please read the following (link)[https://www.mongodb.com/blog/post/geospatial-performance-improvements-in-mongodb-3-2]
+
 
 ### Notes
 The entire experiment and construction of the application, containing more than just querying geospatial data can be found [here (danish)](https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf).  
