@@ -12,7 +12,7 @@ There is a noticeable difference in how well different types of databases proces
 In fact, choosing the correct type of database will lead to a factor 2 increase in database performance.  
 Consequently leading to your database being able to handle twice the amount of request in the same timeframe.
   
-Do note; that this blog will not be focused specifically on mobile device but rather geodata which is prominently used by such devices.  
+Note; that this blog will not be focused specifically on mobile device but rather geodata which is prominently used by such devices.  
 </p>
 <p>
 In the following blog we will investigate which type of database is best suited for handling geospatial data. There are many different types of databases to choose from; graph-databases like NEO4J, key/value stores like Redis, document databases like MongoDB and relational databases like MySql and Mssql.  
@@ -53,7 +53,7 @@ Obviously both of the databases will be using indexing, this not only makes them
 Following MySql columns has been indexed: Locations.name, Locations.Coordinate, BookParts.title, BookParts.author, and all ids.  
 The same goes for MongoDB with the following properties: Locations.name, Books.id, Books.title, Location.id, Books.author and Locations.coordinate.  
   
-for further comparison between index and no index; please see page 13, query 4 (Q4) where UI is without index and MI is with an index [Link to report](https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf)  
+For further comparison between index and no index; please see page 13, query 4 (Q4) where UI is without index and MI is with an index [Link to report](https://github.com/benjaco-edu/db-guttenburg/blob/master/Rapport.pdf)  
   
 ### Query performance
 Below we have included, the query used in our experiment to answer the question in Mysql and MongoDB.  
@@ -72,15 +72,15 @@ left join BookParts       on BookParts.id = BookLocations.bookparts_id
 order by km_away
 ```
   
-st_distance return a distance between two points in meters  
+st_distance returns a distance between two points in meters  
 st_contains returns a boolean indicating whether or not a point is inside or not inside a defined area  
-st_buffer creates and area around a givin coordinate or area around a defined(geo-object) area. Works only in SRID 0  
+st_buffer creates an area around a giving coordinate or around a defined(geo-object) area. Works only in SRID 0. 
 st_GeomFromText, st_AsText convert back and forth between “normal” text and the internal representation of a mysql coordinate   
   
-The only reason we convert back and forth is to get a buffer around the specific point, due to the fact the st_buffer can not work with SRID 4326 (the globe), however we only we only used the buffer as a rough filtering tool to distinguish between inside and outside of the selected area.
+The only reason we convert back and forth is to get a buffer around the specific point, due to the fact the st_buffer cannot work with SRID 4326 (the globe), however we only used the buffer as a rough filtering tool to distinguish between inside and outside of the selected area.
 Mysql can use its own index when using st_contains to see if a point is inside the buffer, when measuring the distance to each point, then the profile tells us that it has been going through all the rows - with the buffer, it does not.
 
-As an aside we will note that we actually ran the code both with and without the buffering and the result was almost identical (within a 2% margin).
+As aside note we actually ran the code both with and without the buffering and the result was almost identical (within a 2% margin).
 
 **MongoDB**  
 ```
@@ -113,7 +113,7 @@ Locations.aggregate
   } } ]
 ```
   
-$geoNear filters away objects there isn’t near a given point, and attaches the distance the the returned object in the same operation.
+$geoNear filters away objects there isn’t near a given point, and attaches the distance to the returned object in the same operation.
   
 Conducting performance measurement for the above query, and displaying the results in diagrams gives us the results shown below.  
 *For a complete table with query measurements please see query 4 in [artifact link](https://github.com/benjaco-edu/db-guttenburg/blob/master/Artefakt%20Applikationstiming.pdf)*  
