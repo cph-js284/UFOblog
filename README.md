@@ -77,7 +77,7 @@ st_contains returns a boolean indicating whether or not a point is inside or not
 st_buffer creates an area around a giving coordinate or around a defined(geo-object) area. Works only in SRID 0. 
 st_GeomFromText, st_AsText convert back and forth between “normal” text and the internal representation of a mysql coordinate   
   
-The only reason we convert back and forth is to get a buffer around the specific point, due to the fact the st_buffer cannot work with SRID 4326 (the globe), however we only used the buffer as a rough filtering tool to distinguish between inside and outside of the selected area.
+The only reason we convert back and forth is to get a buffer around the specific point, and due to the fact the st_buffer cannot work with SRID 4326 (the globe), however we only used the buffer as a rough filtering tool to distinguish between inside and outside of the selected area.
 Mysql can use its own index when using st_contains to see if a point is inside the buffer, when measuring the distance to each point, then the profile tells us that it has been going through all the rows - with the buffer, it does not.
 
 As aside note we actually ran the code both with and without the buffering and the result was almost identical (within a 2% margin).
