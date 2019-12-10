@@ -18,7 +18,7 @@ Do note; that this blog will not be focused specifically on mobile device but ra
 In the following blog we will investigate which type of database is best suited for handling geospatial data. There are many different types of databases to choose from; graph-databases like NEO4J, key/value stores like Redis, document databases like MongoDB and relational databases like MySql and Mssql.  
 Conducting experiments on all of these different types of databases is a task too large for the scope of this blog - so we have decided to narrow the scope to just experimenting using the MongoDB and MySql databases - a non-relational-database versus a relational database; which of these 2 types of databases will handle geospatial in the most performant way (response time)  
   
-*MySql has considerably more built-in methods for handling geospatial data compared to  MongoDB, but how would it perform/hold up compared to MongoDB?*
+*MySql has considerably more built-in methods for handling geospatial data compared to MongoDB, but how would it perform/hold up compared to MongoDB?*
   
 [MySql geofunctions](https://dev.mysql.com/doc/refman/5.7/en/spatial-function-reference.html)  
 [MongoDB geofunctions:](https://docs.mongodb.com/manual/geospatial-queries/#id1)  
